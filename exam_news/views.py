@@ -6,7 +6,7 @@ from django.contrib import messages
 
 def news(request):
     newsapi = NewsApiClient(api_key="7f151344fc4d420b9570773b11af7cd1")
-    topheadlines = newsapi.get_top_headlines(sources='bbc-news, the-verge')
+    topheadlines = newsapi.get_top_headlines(sources='bbc-news')
 
 
     articles = topheadlines['articles']
@@ -57,7 +57,7 @@ def news(request):
 #Other News..............................................
 
     newsapi = NewsApiClient(api_key="7f151344fc4d420b9570773b11af7cd1")
-    topheadlines = newsapi.get_top_headlines(sources='Bloomberg News')
+    topheadlines = newsapi.get_top_headlines(sources='the-verge')
 
 
     articles = topheadlines['articles']
