@@ -1,0 +1,257 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<hr>
+<hr>
+<div class = "container pb-0 mt-5">
+
+{% if messages %}
+{% for message in messages %}
+
+
+<div class="alert alert-{{ message.tags }} alert-dismissible fade show " role="alert">
+    <strong>{{ message }}</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+{% endfor %}
+
+{% endif %}
+
+</div>
+
+
+<div class = "container  pt-5">
+
+<div class="row">
+<!--Profile Section Starts-->
+  <div class="col-sm-5">
+  
+  <div class="card text-center" style="width: 14rem;">
+  
+  {% if fetchuser.profilepic == None %}
+
+  <img src="static/images/hasntravel.jpg" class="rounded-circle" style="width: auto; height: 170px;" alt="Profile">
+ {% else %} 
+  <img src="{{fetchuser.profilepic.url}}" class="rounded-circle" style="width: auto; height: 170px;" alt="Profile">
+{% endif %}
+  <hr class="hr mt-0" >
+  <div class="card-body">
+    <h5 class="card-title">{{user.username}} </h5>
+    <small class="card-text">{{user.email}}</small>
+    <hr>
+    <p class="card-text"><b>About</b><br>" {{fetchuser.about}} "</p>
+  
+    <a href="editprofile" class="btn btn-primary">Edit Profile</a>
+  </div>
+</div>
+  </div>
+  <!--Profile Section Ends-->
+
+
+  <div class="col-sm-7 col-offset-md-2">
+<a type="button" class="btn btn-light btn-lg btn-block" href="posts">What's On Your Mind? Post Here!</a>
+
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Images</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Videos</a>
+  </li>
+ 
+</ul>
+<div class="tab-content" id="myTabContent">
+<!--Image Posts Section Starts-->
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"><div class="card">
+     
+      {% for fetch1 in fetchimage %}
+     
+      {% if fetch1.image %}
+      <div class="media mt-3">
+  
+      <img src="static/images/hasntravel.jpg" class="align-self-start mr-3 ml-2 mr-2" style="width: 60px; height: 60px;" alt="...">
+
+      <div class="media-body">
+      <div class="col-sm-13">    
+        <h5 class="mt-0">{{fetch1.imagename}}</h5>
+        <p><small>{{fetch1.date}}</small></p>
+        <p>{{fetch1.caption}}</p>
+
+                <hr class="hr mt-3 mb-3">
+
+            <a href = 'imagepost'>
+             <p class = "text-right mr-5">Edit Image Post?</p>
+            </a>
+            <a href="{% url 'delete' fetch1.id %}">
+            <p class = "text-right mr-5">Delete Post?</p>
+            </a>
+
+          </div>
+        <hr>
+        {% if fetch1.image %}
+    <img src="{{fetch1.image.url}}" class="img-fluid" style="width: auto; width: 470px; height: 350px;" alt="Responsive image">
+      {% endif %}
+
+      </div>
+      
+    </div>
+        
+{% comment %} {% if pmessage %}
+        <div class="media">
+          <img src="static/images/hasntravel.jpg" class="align-self-start mr-3 ml-2 mr-2" style="width: 40px; height: 40px;" alt="...">
+
+          <div class="media-body">
+          
+            <h6 class="mt-0">{{user.username}}  <small>{{pmessage.date}}</small></h6>
+              <p>{{pmessage.message}}</p>          
+          </div>
+        </div>
+{% endif %} {% endcomment %}
+        
+      {% comment %} <div class = "container mt-3 pl-0 mb-3">
+
+    <form action="fbuser" method="post">
+
+    {% csrf_token %}
+
+  <div class="form-group row">
+    
+    <div class="col-sm-9">
+      <input type="name" name = 'postcomment' placeholder="Type Your Comment Here..." class="form-control" id="name">
+    </div>
+    <button type="submit" class="btn btn-primary btn-sm">Post</button>
+  </div>
+          
+  </div> {% endcomment %}
+
+      
+    
+        <hr style="height:2px;border-width:0;color:gray;background-color:gray" class="hr mt-3 mb-3">
+
+      {% comment %}    <!--Fb Like Section Plugin-->
+
+        <div class="fb-like ml-2" data-href="http://127.0.0.1:8000/" data-width="" data-layout="standard" data-action="like" data-size="large" data-share="true"></div>
+
+         <!--Fb Comment Section Plugin-->
+
+        <div class="fb-comments" data-href="http://127.0.0.1:8000/" data-numposts="1" data-width=""></div>
+
+        <!--Fb plugin end--> {% endcomment %}
+      {% endif %}
+
+    {% endfor %}
+
+</div>
+</div>
+
+<!--Image Posts Section Ends-->
+
+
+<!--Video Posts Section Starts-->
+
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"><div class="card">
+   
+   {% for fetch2 in fetchvideo %}
+         {% if fetch2.utube_video_link %}
+
+   <div class="media mt-3">
+      <img src="static/images/hasntravel.jpg" class="align-self-start mr-3 ml-2 mr-2" style="width: auto; height: 60px;" alt="...">
+      
+      <div class="media-body">
+      
+        <h5 class="mt-0">{{fetch2.videoname}}</h5>
+      
+       
+       <p><small>{{fetch2.date}}</small></p>
+        <p>{{fetch2.caption}}</p>
+
+        <hr class="hr mt-3 mb-3">
+            <a href = 'videopost'>
+             <p class = "text-right mr-5">Edit Video Post?</p>
+            </a>
+             <a href="{% url 'dlt' fetch2.id %}">
+            <p class = "text-right mr-5">Delete Post?</p>
+            </a>
+        <hr>
+        <div class="embed-responsive embed-responsive-16by9">
+<iframe width="470" height="315" class = "embed-responsive-item" src="https://www.youtube.com/embed/{{fetch2.utube_video_link}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>      
+      </div>
+
+   {% comment %}      {% if pmessage %}
+        <div class="media">
+          <img src="static/images/hasntravel.jpg" class="align-self-start mr-3 ml-2 mr-2" style="width: 40px; height: 40px;" alt="...">
+
+          <div class="media-body">
+          
+            <h6 class="mt-0">{{user.username}}  <small>{{pmessage.date}}</small></h6>
+              <p>{{pmessage.message}}</p>          
+          </div>
+        </div>
+{% endif %}
+        
+      <div class = "container mt-3 pl-0 mb-3">
+
+    <form action="fbuser" method="post">
+
+    {% csrf_token %}
+
+  <div class="form-group row">
+    
+    <div class="col-sm-9">
+      <input type="name" name = 'postcomment' placeholder="Type Your Comment Here..." class="form-control" id="name">
+    </div>
+    <button type="submit" class="btn btn-primary btn-sm">Post</button>
+  </div>
+          
+  </div>
+  <hr class="hr mt-3 mb-3">
+ {% endcomment %}
+      </div>
+      
+    </div>
+        <hr style="height:2px;border-width:0;color:gray;background-color:gray" class="hr mt-3 mb-3">
+
+       {% comment %}  <!--Fb Like Section Plugin-->
+
+        <div class="fb-like ml-2" data-href="http://127.0.0.1:8000/" data-width="" data-layout="standard" data-action="like" data-size="large" data-share="true"></div>
+
+        <!--Fb Comment Section Plugin-->
+
+        <div class="fb-comments" data-href="http://127.0.0.1:8000/" data-numposts="1" data-width=""></div>
+ {% endcomment %}
+        <!--Fb plugin end-->
+     {% endif %}
+ {% endfor %}
+
+</div>
+</div>
+  
+<!--Video Posts Section Ends-->
+
+</div>
+
+
+  </div>
+  </div>
+  </div>
+
+{% else %} 
+  <div class="container-fluid mt-5 pt-5">
+
+    <div class="jumbotron jumbotron-fluid pt-4 pb-4">
+    <div class="container">
+        <h1 class="display-4">Hey, Wait</h1>
+        <p class="lead text-danger">You Are Not Authorized To Access This Page! Please <b>Login</b> to Access This Section</p>
+    </div>
+    </div>
+</div>
+  
+  {% endif %}
+
+{%endblock%}

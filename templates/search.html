@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class = "container-fluid mt-5 pt-3 pl-0 pr-0">
+
+{% if messages %}
+{% for message in messages %}
+
+
+<div class="alert alert-{{ message.tags }} alert-dismissible fade show " role="alert">
+    <strong>{{ message }}</strong>
+  <button type="button" class="close " data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+{% endfor %}
+
+{% endif %}
+
+</div>
+
+<div class = "container my-3">
+<h2>Search Results:</h2>
+
+    {% if alldest|length < 1 %}
+    
+        <p>No search results</p>
+        Your search query: <b>{{query}}<b/><br>
+        did not match with any documents.
+        <ul>
+        <li>Make sure that all words are spelled correctly.</li>
+        <li>Try different keywords.</li>
+        <li>Try more general keywords.</li>
+        <li>Try fewer keywords.</li>
+        </ul>
+
+    {% endif %}
+</div>
+
+
+<div class="container my-5"  >
+
+
+<div class="row row-cols-1 row-cols-md-3 ">
+
+{%for dest in alldest %}
+
+  <div class="col mb-4">
+
+  
+    <div class="card">
+    
+    {%if dest.offer %}
+      <a  class="badge badge-success">Special Offer</a>
+
+      {% endif %}
+      <img src={{dest.image.url}} class="card-img-top" alt="...">
+      
+      <div class="card-body">
+      <a href={{dest.place}}>
+        <h5 class="card-title">{{dest.place}} </h5>
+      </a>
+        <p class="card-text">{{dest.desc}} </p>
+        <h4 class="h4">Price : {{dest.price}}</h4>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  {%endfor%}
+
+</div>
+
+</div>
+
+{% endblock content %}

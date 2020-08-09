@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<hr>
+<hr>
+<hr>
+
+<div class = "container">
+
+{% if messages %}
+{% for message in messages %}
+
+
+<div class="alert alert-{{ message.tags }} alert-dismissible fade show " role="alert">
+    <strong>{{ message }}</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+{% endfor %}
+
+{% endif %}
+
+</div>
+
+<div class="container-fluid bg-primary text-white pb-1 text-center">
+<h1 class="display-4">Edit Your Video Post</h1>
+</div>
+<h5 class = "h5 text-center mt-2">Edit Your Caption</h5>
+<hr>
+
+<div class = "container ml-5 mr-5 mb-5 pl-5 pr-5 pb-5">
+
+    <form action="editimagepost" method="post">
+
+    {% csrf_token %}
+
+  <div class="form-group row">
+    <label for="Name" class="col-sm-2 col-form-label">Caption</label>
+    <div class="col-sm-8">
+      <textarea type="name" name = "captionedit2" placeholder="Enter Your New Caption Here" value="hehe" rows="3" class="form-control" id="name"></textarea>
+    </div>
+  </div>
+
+<button type="submit" class="btn btn-primary">Apply Edit</button>
+
+</div>
+
+{% endblock %}

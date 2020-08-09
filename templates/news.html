@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class = "container  pl-5 pr-5 pt-5">
+
+      <!-- News Section -->
+<div class="col-sm-3.5">
+<h2>Top News</h2>
+    <ul class="nav nav-tabs mt-2" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#toi" role="tab" aria-controls="toi" aria-selected="true">BBC News</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#ht" role="tab" aria-controls="ht" aria-selected="false">News 24</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" id="news-tab" data-toggle="tab" href="#news" role="tab" aria-controls="news" aria-selected="false">Bloomberg News</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" id="news-tab" data-toggle="tab" href="#newss" role="tab" aria-controls="newss" aria-selected="false">ESPN</a>
+  </li>
+ 
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="toi" role="tabpanel" aria-labelledby="home-tab">
+  
+    <ul class="list-unstyled">
+{% for nhead,nbody,nimage,ndate,url in mylist %}
+  {% comment %} <li class="media">
+          <img src="{{nimage}}" class="align-self-start mr-3 ml-3 mt-3" style="width: 370px; height: 240px;" alt="...">
+    <div class="media-body">
+      
+      <a href = "{{url}}">
+      <div class="mh-100 mt-3 mb-1"  style="width: auto;"><h6><b>{{nhead}} </b></h6></div>
+      </a>
+
+      <div class="mh-100" style="width: 360px;">At <small>{{ndate}} </small></div>
+      
+      <div class="mh-100" style="width: auto;">{{nbody}}</div>
+    </div>
+  </li> {% endcomment %}
+
+<div class="card-group mt-3 mb-3">
+  <div class="card">
+    <img src="{{nimage}}" class="card-img-top" alt="news_image">
+    <div class="card-body">
+    <a href = "{{url}}">
+      <h5 class="card-title">{{nhead}}</h5>
+    </a>  
+      <p class="card-text">{{nbody}}</p>
+      <p class="card-text"><small class="text-muted">{{ndate}}</small></p>
+    </div>
+  </div>
+</div>
+ 
+  
+
+  {% endfor %}
+    
+    </ul>
+  </div>
+  
+  <div class="tab-pane fade" id="ht" role="tabpanel" aria-labelledby="profile-tab">
+    <ul class="list-unstyled">
+{% for nhead,nbody,nimage,ndate,url in mylist1 %}
+  {% comment %} <li class="media">
+          <img src="{{nimage}}" class="align-self-start mr-3 ml-3 mt-3" style="width: 270px; height: 140px;" alt="...">
+    <div class="media-body">
+<a href = "{{url}}">
+      <div class="mh-100 mt-3 mb-1"  style="width: auto;"><h6><b>{{nhead}} </b></h6></div>
+      </a>
+      <div class="mh-100" style="width: 360px;">At <small>{{ndate}} </small></div>
+      
+      <div class="mh-100" style="width: auto;">{{nbody}}</div>
+    </div>
+  </li>
+  <hr class="hr mt-4"> {% endcomment %}
+
+<div class="card-group mt-3 mb-3">
+  <div class="card">
+    <img src="{{nimage}}" class="card-img-top" alt="news_image">
+    <div class="card-body">
+    <a href = "{{url}}">
+      <h5 class="card-title">{{nhead}}</h5>
+    </a>  
+      <p class="card-text">{{nbody}}</p>
+      <p class="card-text"><small class="text-muted">{{ndate}}</small></p>
+    </div>
+  </div>
+</div>
+
+  {% endfor %}
+    
+    </ul>
+  </div>
+
+ <div class="tab-pane fade" id="news" role="tabpanel" aria-labelledby="profile-tab">
+    
+{% for nhead,nbody,nimage,ndate,url in mylist2 %}
+    
+<div class="card-group mt-3 mb-3">
+  <div class="card">
+    <img src="{{nimage}}" class="card-img-top" alt="news_image">
+    <div class="card-body">
+    <a href = "{{url}}">
+      <h5 class="card-title">{{nhead}}</h5>
+    </a>  
+      <p class="card-text">{{nbody}}</p>
+      <p class="card-text"><small class="text-muted">{{ndate}}</small></p>
+    </div>
+  </div>
+</div>
+
+ {% endfor %}
+
+</div>
+
+ <div class="tab-pane fade" id="newss" role="tabpanel" aria-labelledby="profile-tab">
+    
+  {% for nhead,nbody,nimage,ndate,url in mylist3 %}
+    
+<div class="card-group mt-3 mb-3">
+  <div class="card">
+    <img src="{{nimage}}" class="card-img-top" alt="news_image">
+    <div class="card-body">
+    <a href = "{{url}}">
+      <h5 class="card-title">{{nhead}}</h5>
+    </a>  
+      <p class="card-text">{{nbody}}</p>
+      <p class="card-text"><small class="text-muted">{{ndate}}</small></p>
+    </div>
+  </div>
+</div>
+
+ {% endfor %}
+
+    
+</div>
+
+
+
+</div>
+
+</div>
+
+
+</div>
+
+
+{% endblock  %}
+

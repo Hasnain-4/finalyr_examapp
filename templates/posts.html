@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+
+<div class = "container p-5 mt-4 ">
+
+{% if messages %}
+{% for message in messages %}
+
+
+<div class="alert alert-{{ message.tags }} alert-dismissible fade show " role="alert">
+    <strong>{{ message }}</strong>
+  <button type="button" class="close " data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+{% endfor %}
+
+{% endif %}
+
+</div>
+
+<div class="container-fluid bg-primary text-white pb-1 text-center">
+<h1 class="display-4">Image Section</h1>
+</div>
+<h5 class = "h5 text-center mt-2">Post Your Image With Caption</h5>
+<hr>
+
+<div class = "container mb-5 pl-5 pr-5 pb-5">
+
+    <form action="posts" method="post">
+
+    {% csrf_token %}
+
+  <div class="form-group row">
+    <label for="Name" class="col-sm-2 col-form-label">Your Name</label>
+    <div class="col-sm-8">
+      <input type="name" name = "imagename" readonly value = "{{user.username}}" class="form-control" id="name">
+    </div>
+  </div>
+
+    <label for="exampleInputNumber">Please Upload Your Photo</label><br>
+
+    <input type="file" id="myFile" name="photo1"><br><br>
+
+
+  <div class="form-group row">
+    <label for="Name" class="col-sm-2 col-form-label">Caption</label>
+    <div class="col-sm-8">
+      <textarea type="name" name = "caption1" placeholder="Enter Your Caption Here" rows="3" class="form-control" id="name"></textarea>
+    </div>
+  </div>
+
+<button type="submit" name = 'postimage' class="btn btn-primary">Post</button>
+
+</div>
+
+<div class="container-fluid bg-primary text-white mt-5 p-2 text-center">
+<h1 class="display-4">Video Section</h1>
+</div>
+<h5 class = "h5 text-center mt-2">Post Your Video Link With Caption</h5>
+<hr>
+
+<div class = "container ml-5 mr-5 mb-5 pl-5 pr-5 pb-5">
+
+    <form action="posts" method="post">
+
+    {% csrf_token %}
+
+    <div class="form-group row">
+    <label for="Name" class="col-sm-2 col-form-label">Your Name</label>
+    <div class="col-sm-8">
+      <input type="name" name = "videoname" readonly value = "{{user.username}}" class="form-control" id="name">
+    </div>
+  </div>
+
+    <div class="form-group row">
+    <label for="Name" class="col-sm-2 col-form-label">YouTube Link</label>
+      <div class="col-sm-8">
+    <input type="name" name = "utubelink" class="form-control" id="exampleFormControlInput1" placeholder="Enter Your Video Link">
+      </div>
+
+    </div>
+
+
+  <div class="form-group row">
+    <label for="Name" class="col-sm-2 col-form-label">Caption</label>
+    <div class="col-sm-8">
+      <textarea type="name" name = "caption2" placeholder="Enter Your Caption Here" rows="3" class="form-control" id="name"></textarea>
+    </div>
+  </div>
+  
+
+<button type="submit"  name = 'postvideo' class="btn btn-primary">Post</button>
+
+</div>
+
+{% else %} 
+  <div class="container-fluid mt-5 pt-5">
+
+    <div class="jumbotron jumbotron-fluid pt-4 pb-4">
+    <div class="container">
+        <h1 class="display-4">Hey, Wait</h1>
+        <p class="lead text-danger">You Are Not Authorized To Access This Page! Please <b>Login</b> to Access This Section</p>
+    </div>
+    </div>
+</div>
+  
+  {% endif %}
+
+{% endblock %}

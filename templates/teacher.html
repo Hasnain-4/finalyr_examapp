@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!--Message section-->
+{% if user.is_staff %}
+
+
+<div class = "container-fluid pb-0 pt-5 mt-3 ">
+
+{% if messages %}
+{% for message in messages %}
+
+
+<div class="alert alert-{{ message.tags }} alert-dismissible fade show " role="alert">
+    <strong>{{ message }}</strong>
+  <button type="button" class="close " data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+{% endfor %}
+
+{% endif %}
+
+</div>
+<!--Message section End-->
+
+<div class="container-fluid m-0 p-0">
+
+    <div class="jumbotron jumbotron-fluid pt-4 pb-4">
+    <div class="container">
+        <h1 class="display-4">Hey, {{user.username}} sir</h1>
+        <p class="lead">Please upload the questions and their options in the required fields given below!</p>
+        <hr>
+        <p><b>Note </b>: Please Remember, <b> The Last Submitted Value </b> of Time Limitation, Subject Name & Best Wishes <b> Will Be Shown On Students Side</b>. And the Warning Message, If You Want To Give Warning Then You Can Use This <b>Otherwise</b> You Can Leave Blank. </p>
+    </div>
+    </div>
+</div>
+
+<!--TEacher's posting section-->
+
+<div class = "container  mb-5 pl-5 pr-5 pb-5">
+
+<form action= "teacher" method= "post" >
+
+    {% csrf_token %}
+
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Time Limitation</label>
+    <input type="name" name= "timelimit" placeholder="Example : 2 hours / 1 hours or 50 minutes" class="form-control" id="name" >
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Subject Name</label>
+    <input type="name" name= "sub_name" class="form-control" id="exampleFormControlInput1" placeholder="Please Enter Subject Name">
+  </div>
+  
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Best Wishes</label>
+    <input type="name" name= "bestwishes" class="form-control" id="exampleFormControlInput1" placeholder="Wish Your Students To Give Their Best">
+  </div>
+
+  <div class="form-group text-danger">
+    <label for="exampleFormControlInput1">Warning Message <b>(For Emergency Purpose Only)</b></label>
+    <input type="name" name= "warningmsg" class="form-control" id="exampleFormControlInput1" placeholder="Type Your Warning Here...">
+  </div>
+
+  <button type="submit" name="bsubmit" class="btn btn-primary mt-2">Submit</button>
+  
+  <h3 class = "h3 mt-4 mb-4 text-center text-info">Either Write Your Question or Upload From <b>' Choose File '</b> Given Below</h3>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Please Type Your Question</label>
+    <textarea class="form-control" name= "written_question" id="exampleFormControlTextarea1" placeholder="Type Your Question Here..." rows="3"></textarea>
+  </div>
+
+
+    <label for="exampleInputNumber">Please Upload Your Image Question</label>
+
+    <!--For camera access in android phone-->
+
+    <input type="file" accept="image/*" name="imagequestion" capture="camera">
+   
+    <!--For image uploading-->
+
+    {% comment %} <input type="file" id="myFile" name="imagequestion"><br> {% endcomment %}
+
+    <hr>
+    <h3 class="h3 text-center text-info mt-5 mb-4">Please Enter Options</h3>
+
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Option 1</label>
+    <input type="name" name= "op1" value= "A" class="form-control" id="exampleFormControlInput1" placeholder="Example : A or can be some text">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Option 2</label>
+    <input type="name" name= "op2" value= "B" class="form-control" id="exampleFormControlInput1" placeholder="Example : B or can be some text">
+  </div>
+ 
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Option 3</label>
+    <input type="name" name= "op3" value= "C" class="form-control" id="exampleFormControlInput1" placeholder="Example : C or can be some text">
+  </div>
+ 
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Option 4</label>
+    <input type="name" name= "op4" value= "D" class="form-control" id="exampleFormControlInput1" placeholder="Example : D or can be some text">
+  </div>
+ 
+  <button type="submit" name="qsubmit" class="btn btn-primary mt-2">Submit</button>
+</form>
+   
+</div>   
+
+{% else %} 
+
+<div class="container-fluid mt-5 pt-5">
+
+    <div class="jumbotron jumbotron-fluid pt-4 pb-4">
+    <div class="container">
+        <h1 class="display-4">Hey, {{user.username}}</h1>
+        <p class="lead text-danger">You Are Not Authorized To Access This Page!</p>
+    </div>
+    </div>
+</div>
+
+{% endif %}
+
+{% endblock %}

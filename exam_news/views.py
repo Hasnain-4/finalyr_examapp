@@ -1,0 +1,192 @@
+from django.shortcuts import render,redirect
+from newsapi import NewsApiClient
+from exam_news.models import Teacher, StudentData, TecherData
+from django.contrib import messages
+
+
+def news(request):
+    newsapi = NewsApiClient(api_key="7f151344fc4d420b9570773b11af7cd1")
+    topheadlines = newsapi.get_top_headlines(sources='bbc-news, the-verge')
+
+
+    articles = topheadlines['articles']
+
+    desc = []
+    hdline = []
+    img = []
+    date = []
+    ur = []
+
+    for i in range(len(articles)):
+        myarticles = articles[i]
+
+        hdline.append(myarticles['title'])
+        desc.append(myarticles['description'])
+        img.append(myarticles['urlToImage'])
+        date.append(myarticles['publishedAt'])
+        ur.append(myarticles['url'])
+
+    mylist = zip(hdline, desc, img, date,ur)
+
+#Other News..............................................
+
+    newsapi = NewsApiClient(api_key="7f151344fc4d420b9570773b11af7cd1")
+    topheadlines = newsapi.get_top_headlines(sources='News24')
+
+
+    articles = topheadlines['articles']
+
+    desc = []
+    hdline = []
+    img = []
+    date = []
+    ur = []
+
+    for i in range(len(articles)):
+        myarticles = articles[i]
+
+        hdline.append(myarticles['title'])
+        desc.append(myarticles['description'])
+        img.append(myarticles['urlToImage'])
+        date.append(myarticles['publishedAt'])
+        ur.append(myarticles['url'])
+
+    mylist1 = zip(hdline, desc, img, date,ur)
+
+
+#Other News..............................................
+
+    newsapi = NewsApiClient(api_key="7f151344fc4d420b9570773b11af7cd1")
+    topheadlines = newsapi.get_top_headlines(sources='Bloomberg News')
+
+
+    articles = topheadlines['articles']
+
+    desc = []
+    hdline = []
+    img = []
+    date = []
+    ur = []
+
+    for i in range(len(articles)):
+        myarticles = articles[i]
+
+        hdline.append(myarticles['title'])
+        desc.append(myarticles['description'])
+        img.append(myarticles['urlToImage'])
+        date.append(myarticles['publishedAt'])
+        ur.append(myarticles['url'])
+
+    mylist2 = zip(hdline, desc, img, date,ur)
+
+
+#Other News..............................................
+
+    newsapi = NewsApiClient(api_key="7f151344fc4d420b9570773b11af7cd1")
+    topheadlines = newsapi.get_top_headlines(sources='ESPN')
+
+
+    articles = topheadlines['articles']
+
+    desc = []
+    hdline = []
+    img = []
+    date = []
+    ur = []
+
+    for i in range(len(articles)):
+        myarticles = articles[i]
+
+        hdline.append(myarticles['title'])
+        desc.append(myarticles['description'])
+        img.append(myarticles['urlToImage'])
+        date.append(myarticles['publishedAt'])
+        ur.append(myarticles['url'])
+
+    mylist3 = zip(hdline, desc, img, date,ur)
+
+
+    return render(request, 'news.html', context={"mylist":mylist,"mylist1":mylist1,"mylist2":mylist2,"mylist3":mylist3})
+
+
+
+# def bbc(request):
+#     newsapi = NewsApiClient(api_key="YOUR API KEY")
+#     topheadlines = newsapi.get_top_headlines(sources='bbc-news')
+
+
+#     articles = topheadlines['articles']
+
+#     desc = []
+#     hdline = []
+#     img = []
+
+#     for i in range(len(articles)):
+#         myarticles = articles[i]
+
+#         news.append(myarticles['title'])
+#         desc.append(myarticles['description'])
+#         img.append(myarticles['urlToImage'])
+
+
+#     mylist = zip(news, desc, img)
+
+
+#     return render(request, 'bbc.html', context={"mylist":mylist})
+
+def teacher(request):
+    if request.method =='POST':
+
+        if 'bsubmit' in request.POST:
+
+            giventime = request.POST.get('timelimit')
+            sub = request.POST.get('sub_name')
+            bestwish = request.POST.get('bestwishes')
+            warningmessage = request.POST.get('warningmsg')
+
+            if giventime and sub: 
+                 #To store into database if every conditions are satisfy     
+                teacher_data = Teacher(timeslot=giventime,subject=sub,bestwish=bestwish,warningmessage=warningmessage)
+                teacher_data.save()
+                messages.success(request, 'Data Submitted Successfully!')
+                return redirect("teacher")
+            else:    
+                messages.warning(request, 'Time-limitation and Subject Field Both are Required!')
+                return redirect("teacher")
+
+        if 'qsubmit' in request.POST:
+
+            writnquestn = request.POST.get('written_question')
+            imgqstn = request.POST.get('imagequestion')
+            optn1 = request.POST.get('op1')
+            optn2 = request.POST.get('op2')
+            optn3 = request.POST.get('op3')
+            optn4 = request.POST.get('op4')
+
+            if optn1 and optn2 and optn3 and optn4:
+                 #To store into database if every conditions are satisfy     
+                teacher_data1 = TecherData(writtenquestion=writnquestn,imagequestion=imgqstn,option1=optn1,option2=optn2,option3=optn3,option4=optn4)
+                teacher_data1.save()
+                messages.success(request, 'Successfully Submitted!')
+                return redirect("teacher")
+            else:
+                messages.warning(request, 'All The Options are Required!')
+                return redirect("teacher")
+                
+    return render(request, 'teacher.html')
+            
+
+def student(request):
+
+    if request.method == 'POST':
+
+        st=request.POST.getlist('examsubmit')  # returns a list of values after getting from input with same name... 
+        result = StudentData(answer=st)
+        result.save()
+        messages.success(request, 'Thank You! Your Response Have Been Recorded.')
+        return redirect("student")
+
+    teach = Teacher.objects.all().last()
+    teachQ = TecherData.objects.all()[::-1]
+
+    return render(request, 'student.html', {'teach':teach, 'teachQ':teachQ})
