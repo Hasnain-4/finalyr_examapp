@@ -17,10 +17,10 @@ class Contact(models.Model):
 
 class Imagepost(models.Model):
 
-    imagename = models.CharField(max_length = 222 , default = None)
+    imagename = models.CharField(max_length = 222 )
     date = models.DateTimeField(default=datetime.now())
     caption = models.CharField(max_length = 2222 , default = None)
-    image = models.ImageField(upload_to='post', default = '', blank = True, null=True )
+    image = models.ImageField( default = None, blank = True, null=True )
 
     def __str__(self):
         
@@ -28,7 +28,7 @@ class Imagepost(models.Model):
 
 class Videopost(models.Model):
 
-    videoname = models.CharField(max_length = 222 , default = None)
+    videoname = models.CharField(max_length = 222)
     date = models.DateTimeField(default=datetime.now())
     caption = models.CharField(max_length = 2222 , default = None)
     utube_video_link = models.CharField(max_length = 2222)
@@ -39,7 +39,7 @@ class Videopost(models.Model):
 
 #In image field .. upload_to section is must
 class Userprofile(models.Model):
-    profilepic = models.ImageField(upload_to='post/profile',default = 'static/images/hasntravel.jpg')
+    profilepic = models.ImageField(default = 'static/images/hasntravel.jpg')
     about = models.TextField()
 
     # def __str__(self):

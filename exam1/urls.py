@@ -1,5 +1,7 @@
 from django.urls import path
 from exam1 import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
 
@@ -19,4 +21,4 @@ urlpatterns = [
     path('dlt/<id>',views.delete_postv,name='dlt'),
 
 
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

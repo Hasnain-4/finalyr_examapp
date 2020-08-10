@@ -18,11 +18,12 @@ from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
 
-#To Change admin text
+#To Change admin text .........................
 
 admin.site.site_header = "E-Exam Admin"
 admin.site.site_title = "E-Exam Admin Portal"
 admin.site.index_title = "Welcome to E-Exam Portal"
+#..............................................
 
 urlpatterns = [
     path('admin/', admin.site.urls),

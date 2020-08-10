@@ -187,6 +187,6 @@ def student(request):
         return redirect("student")
 
     teach = Teacher.objects.all().last()
-    teachQ = TecherData.objects.all()[::-1]
+    teachQ = TecherData.objects.all()  # [::-1] for showing in reverse order
 
     return render(request, 'student.html', {'teach':teach, 'teachQ':teachQ})
