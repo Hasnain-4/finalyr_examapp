@@ -3,7 +3,14 @@
 
 {% block content %}
 
-<div class = "container p-5 m-4 ">
+<div class="jumbotron jumbotron-fluid mt-5 p-4 bg-dark">
+  <div class="container">
+    <h1 class="display-4 text-white text-center">Sign Up</h1>
+    <p class="lead text-white text-center">Remember That, The Email & Username Should Be Unique Otherwise Error Will Occur. </p>
+  </div>
+</div>
+
+<div class = "container-fluid ">
 
 {% if messages %}
 {% for message in messages %}
@@ -22,7 +29,7 @@
 
 </div>
 
-<div class="container mb-5 pl-5 pr-5 pb-5">
+<div class="container mb-5 pl-5 pt-2 pr-5 pb-5">
 
 <form action="sign_up" method="post">
 

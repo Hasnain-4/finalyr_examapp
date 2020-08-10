@@ -79,29 +79,40 @@
 
       <div class="media-body">
       <div class="col-sm-13">    
+
+      <div class="container">
+        <div class="row">
+          <div class="col-7">
+
         <h5 class="mt-0">{{fetch1.imagename}}</h5>
         <p><small>{{fetch1.date}}</small></p>
-        <p>{{fetch1.caption}}</p>
+        
 
-                <hr class="hr mt-3 mb-3">
+        </div>
+              
 
           {% comment %}   <a href = 'imagepost'>
              <p class = "text-right mr-5">Edit Image Post?</p>
             </a> {% endcomment %}
-
+          <div class="col">
             <a href="{% url 'delete' fetch1.id %}">
-            <p class = "text-right mr-5">Delete Post?</p>
+            <p class = "text-right ">Delete?</p>
             </a>
 
+              </div>
+            </div>
           </div>
-        <hr>
-        {% if fetch1.image %}
-    <img src="{{fetch1.image.url}}" class="img-fluid" style="width: auto; width: 470px; height: 350px;" alt="image">
-      {% endif %}
+         </div>
 
-      </div>
-      
+         </div>
+     
     </div>
+        <hr>
+         <p class="pl-2 pr-2">{{fetch1.caption}}</p>
+        <hr style="height:1px;border-width:0;color:gray;background-color:gray" class="hr mt-3 mb-3">
+        {% if fetch1.image %}
+    <img src="{{fetch1.image.url}}" class="img-fluid pl-2 pr-2" style="width: auto; width: 470px; height: 350px;" alt="image">
+      {% endif %}
         
 {% comment %} {% if pmessage %}
         <div class="media">
@@ -166,23 +177,24 @@
       
       <div class="media-body">
       
-        <h5 class="mt-0">{{fetch2.videoname}}</h5>
-      
-       
-       <p><small>{{fetch2.date}}</small></p>
-        <p>{{fetch2.caption}}</p>
+      <div class="container">
+        <div class="row">
+          <div class="col-7">
 
-        <hr class="hr mt-3 mb-3">
+        <h5 class="mt-0">{{fetch2.videoname}}</h5> 
+       <p><small>{{fetch2.date}}</small></p>
+       
+        </div>
             {% comment %} <a href = 'videopost'>
              <p class = "text-right mr-5">Edit Video Post?</p>
             </a> {% endcomment %}
+            <div class="col">
              <a href="{% url 'dlt' fetch2.id %}">
-            <p class = "text-right mr-5">Delete Post?</p>
+            <p class = "text-right">Delete?</p>
             </a>
-        <hr>
-        <div class="embed-responsive embed-responsive-16by9">
-<iframe width="470" height="315" class = "embed-responsive-item" src="https://www.youtube.com/embed/{{fetch2.utube_video_link}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>      
-      </div>
+             </div>
+            </div>
+          </div>
 
    {% comment %}      {% if pmessage %}
         <div class="media">
@@ -216,6 +228,13 @@
       </div>
       
     </div>
+            <hr>
+           <p class="pl-2 pr-2">{{fetch2.caption}}</p>
+      
+        <hr style="height:1px;border-width:0;color:gray;background-color:gray" class="hr mt-3 mb-3">
+        <div class="embed-responsive embed-responsive-16by9 ">
+<iframe width="470" height="315" class = "embed-responsive-item pl-2 pr-2" src="https://www.youtube.com/embed/{{fetch2.utube_video_link}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>      
+      </div>
         <hr style="height:2px;border-width:0;color:gray;background-color:gray" class="hr mt-3 mb-3">
 
        {% comment %}  <!--Fb Like Section Plugin-->
@@ -245,10 +264,10 @@
 {% else %} 
   <div class="container-fluid mt-5 pt-5">
 
-    <div class="jumbotron jumbotron-fluid pt-4 pb-4">
+    <div class="jumbotron jumbotron-fluid bg-dark pt-4 pb-4">
     <div class="container">
-        <h1 class="display-4">Hey, Wait</h1>
-        <p class="lead text-danger">You Are Not Authorized To Access This Page! Please <b>Login</b> to Access This Section</p>
+        <h1 class="display-4 text-white">Hey, Wait</h1>
+        <p class="lead text-danger">You Are Not Authorized To Access This Page! Please Login to Access This Section</p>
     </div>
     </div>
 </div>
