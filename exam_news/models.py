@@ -39,7 +39,7 @@ class StudentSubmit(models.Model):
     answer = models.TextField()
     user = models.OneToOneField(User, models.CASCADE)
 
-#if we remove this dtr then data will be save as object data .. and this str giving blank value
+#if we remove this str then data will be save as object data .. and this str giving blank value
     def __str__(self):
         return self.user.username
     

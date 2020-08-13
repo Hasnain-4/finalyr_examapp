@@ -184,7 +184,7 @@ def student(request,post_id=None):
         result = StudentSubmit(answer=st)
         result.save()
         messages.success(request, 'Thank You! Your Response Have Been Recorded.')
-        return redirect("student")
+        return redirect("dashboard")
 
     teach = Teacher.objects.all().last()
     teachQ = TecherData.objects.all()  # [::-1] for showing in reverse order
