@@ -39,7 +39,7 @@ class Videopost(models.Model):
 
 #In image field .. upload_to section is must
 class Userprofile(models.Model):
-    profilepic = models.ImageField(default = 'static/images/hasntravel.jpg')
+    profilepic = models.ImageField(default = 'static/images/john.jpg')
     about = models.TextField()
 
     # def __str__(self):

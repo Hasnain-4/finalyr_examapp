@@ -1,14 +1,12 @@
 from django.urls import path
 from exam1 import views
-from django.conf import settings
-from django.conf.urls.static import static
+
 
 urlpatterns = [
 
     path('', views.home , name = 'home'),
-    path('sign_up', views.signup , name = 'signup'),
+    path('sign_up', views.signup , name = 'sign_up'),
     path('signin', views.signin , name = 'signin'),
-    path('forgetpassword', views.forget , name = 'forget'),
     path('about', views.about , name = 'about'),
     path('contact', views.contact , name = 'contact'),
     path('logout', views.logout,name='logout'),
@@ -21,4 +19,4 @@ urlpatterns = [
     path('dlt/<id>',views.delete_postv,name='dlt'),
 
 
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]

@@ -28,8 +28,8 @@
 
     <div class="jumbotron jumbotron-fluid pt-4 pb-4 bg-dark">
     <div class="container">
-        <h1 class="display-4 text-danger">Hey, {{user.username}}</h1>
-        <p class="lead text-danger">Hope You Will Give Your Best In This Exam :)</p>
+        <h1 class="display-4 text-white">Hey, {{user.username}}</h1>
+        <p class="lead text-info">Hope You Will Give Your Best In This Exam :)</p>
     </div>
     </div>
 </div>
@@ -60,9 +60,11 @@
 </h5>
 <hr class= "mt-4">
 
-<h1 class="text-center text-muted">{{teach.bestwish}}</h1>
-<h4 class = "text-center"> All The Very Best Man!!</h4>
-
+{% if teach.bestwish %}
+<h1 class="text-center">{{teach.bestwish}}</h1>
+{% else %}
+<h4 class = "text-center"> All The Very Best Student!!</h4>
+{% endif %}
 <hr class= "mt-4">
 
 {% comment %} <div class="container m-0 p-3">
@@ -95,8 +97,10 @@
 <img src="{{techr.imagequestion.url}}" class="img-fluid p-3" style="width:auto; height: auto;" alt="question">
 {% endif %}
 
+         
 <div class="container">
-
+<div class="row">
+  <div class="col-7">
 <!--Options will be here .. for loop must be start from here-->
   <h5 class = "h5 ml-4">
     <small>a) </small>
@@ -118,8 +122,23 @@
          {{techr.option4}}
   </h5>
 
+</div>
+<!--delete question by id-->
+{% if user.is_staff %}
+
+  <div class="col">
+          <a href="{% url 'delete_question' techr.id %}">
+            <p class = "text-right ">Delete Question?</p>
+          </a>
+  </div>
+
+  {% endif %}
+  
+  <!--delete question by id-->
 
 </div>
+</div>
+
 <hr>
 
 <div class = "container pl-5 pr-5">

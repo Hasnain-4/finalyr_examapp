@@ -81,9 +81,9 @@ def contact(request):
 
     return render(request , 'contact.html')
     
-def forget(request):
+# def forget(request):
 
-    return render(request , 'forgetpassword.html')
+#     return render(request , 'forgetpassword.html')
 
 
 def logout(request):
