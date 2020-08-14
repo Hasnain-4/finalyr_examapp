@@ -42,7 +42,7 @@
 
 <div class = "container  mb-5 pl-5 pr-5 pb-5">
 
-<form action= "teacher" method= "post" >
+<form action= "teacher" method= "post" enctype="multipart/form-data">
 
     {% csrf_token %}
 
@@ -118,7 +118,7 @@
 
     <div class="jumbotron jumbotron-fluid bg-dark pt-4 pb-4">
     <div class="container">
-        <h1 class="display-4 text-white">Hey, {{user.username}}</h1>
+        <h1 class="display-4 text-white">Wait, {{user.username}}</h1>
         <p class="lead text-danger"><b>You Are Not Authorized To Access This Page! Please Select Student Section.</b></p>
     </div>
     </div>

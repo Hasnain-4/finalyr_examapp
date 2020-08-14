@@ -157,7 +157,7 @@ def teacher(request):
         if 'qsubmit' in request.POST:
 
             writnquestn = request.POST.get('written_question')
-            imgqstn = request.POST.get('imagequestion')
+            imgqstn = request.FILES['imagequestion']
             optn1 = request.POST.get('op1')
             optn2 = request.POST.get('op2')
             optn3 = request.POST.get('op3')

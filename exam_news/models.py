@@ -18,7 +18,7 @@ class Teacher(models.Model):
 class TecherData(models.Model):
 
     writtenquestion = models.CharField(default='',max_length= 330, blank = True, null=True )
-    imagequestion = models.ImageField( default = None, blank = True, null=True )
+    imagequestion = models.ImageField(upload_to="pics", default = None, blank = True, null=True )
     option1 = models.CharField(default='A',max_length= 150)
     option2 = models.CharField(default='B',max_length= 150)
     option3 = models.CharField(default='C',max_length= 150)
@@ -40,8 +40,8 @@ class StudentSubmit(models.Model):
     user = models.OneToOneField(User, models.CASCADE)
 
 #if we remove this str then data will be save as object data .. and this str giving blank value
-    def __str__(self):
-        return self.user.username
+    # def __str__(self):
+    #     return self.user.username
     
 
    

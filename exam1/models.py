@@ -20,7 +20,7 @@ class Imagepost(models.Model):
     imagename = models.CharField(max_length = 222 )
     date = models.DateTimeField(default=datetime.now())
     caption = models.CharField(max_length = 2222 , default = None)
-    image = models.ImageField( default = None, blank = True, null=True )
+    image = models.ImageField(upload_to="pics", default = None, blank = True, null=True )
 
     def __str__(self):
         
@@ -39,7 +39,7 @@ class Videopost(models.Model):
 
 #In image field .. upload_to section is must
 class Userprofile(models.Model):
-    profilepic = models.ImageField(default = 'static/images/john.jpg')
+    profilepic = models.ImageField(upload_to="pics",default = 'static/images/john.jpg')
     about = models.TextField()
 
     # def __str__(self):

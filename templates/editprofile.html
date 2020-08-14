@@ -11,7 +11,7 @@
 <hr>
 <div class = "container mt-5 pl-5 pr-5">
 
-    <form action="editprofile" method="post">
+    <form action="editprofile" method="post" enctype="multipart/form-data">
 
     {% csrf_token %}
 
@@ -27,16 +27,16 @@
     </div>
   </div>
 
-<button type="submit" class="btn btn-primary mb-3">Save</button>
+<button type="submit" class="btn btn-primary mb-3">Update Profile</button>
 
 </div>
 
 {% else %} 
   <div class="container-fluid mt-5 pt-5">
 
-    <div class="jumbotron jumbotron-fluid pt-4 pb-4">
+    <div class="jumbotron jumbotron-fluid bg-dark pt-4 pb-4">
     <div class="container">
-        <h1 class="display-4">Hey, Wait</h1>
+        <h1 class="display-4 text-white">Hey, Wait</h1>
         <p class="lead text-danger">You Are Not Authorized To Access This Page! Please <b>Login</b> to Access This Section</p>
     </div>
     </div>

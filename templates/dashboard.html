@@ -38,7 +38,9 @@
 
   <img src="static/images/hasntravel.jpg" class="rounded-circle" style="width: auto; height: 180px;" alt="Profile">
  {% else %} 
+ <a href={{fetchuser.profilepic.url}}>
   <img src="{{fetchuser.profilepic.url}}" class="rounded-circle" style="width: auto; height: 180px;" alt="Profile">
+</a>
 {% endif %}
   <hr class="hr mt-0" >
   <div class="card-body">
@@ -75,7 +77,7 @@
       {% if fetch1.image %}
       <div class="media mt-3">
   
-      <img src="static/images/hasntravel.jpg" class="align-self-start mr-3 ml-2 mr-2" style="width: 60px; height: 60px;" alt="...">
+      <img src="static/images/user1.png" class="align-self-start mr-3 ml-2 mr-2" style="width: 60px; height: 60px;" alt="...">
 
       <div class="media-body">
       <div class="col-sm-13">    
@@ -107,11 +109,13 @@
          </div>
      
     </div>
-        <hr>
+        <hr style="height:1px;border-width:0;color:gray;background-color:gray">
          <p class="pl-2 pr-2">{{fetch1.caption}}</p>
-        <hr style="height:1px;border-width:0;color:gray;background-color:gray" class="hr mt-3 mb-3">
+        <hr class="hr mt-3 mb-3">
         {% if fetch1.image %}
-    <img src="{{fetch1.image.url}}" class="img-fluid pl-2 pr-2" style="width: auto; height: 350px;" alt="image">
+        <a href={{fetch1.image.url}}>
+    <img src="{{fetch1.image.url}}" class="img-fluid pl-2 pr-2" style="width: 650px; height: 350px;" alt="image">
+        </a>
       {% endif %}
         
 {% comment %} {% if pmessage %}
@@ -173,7 +177,7 @@
          {% if fetch2.utube_video_link %}
 
    <div class="media mt-3">
-      <img src="static/images/hasntravel.jpg" class="align-self-start mr-3 ml-2 mr-2" style="width: auto; height: 60px;" alt="...">
+      <img src="static/images/user1.png" class="align-self-start mr-3 ml-2 mr-2" style="width: auto; height: 60px;" alt="...">
       
       <div class="media-body">
       

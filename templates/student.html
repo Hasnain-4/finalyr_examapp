@@ -94,7 +94,9 @@
     </div>
 {% elif techr.imagequestion %}    
   <b>Q. {{forloop.counter}}</b> 
-<img src="{{techr.imagequestion.url}}" class="img-fluid p-3" style="width:auto; height: auto;" alt="question">
+  <a  href ={{techr.imagequestion.url}}>
+<img src="{{techr.imagequestion.url}}" class="img-fluid p-3" style="width:933px; height: auto;" alt="{{techr.imagequestion.url}}">
+</a>
 {% endif %}
 
          

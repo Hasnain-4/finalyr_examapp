@@ -108,7 +108,7 @@ def posts(request):
         if 'postimage' in request.POST:
         
             imgname = request.POST.get('imagename')
-            photo = request.POST.get('photo1')
+            photo = request.FILES['photo1']
             caption1 = request.POST.get('caption1')
             imagepostdata = Imagepost(image = photo, caption = caption1, imagename = imgname)
             imagepostdata.save()
@@ -142,7 +142,7 @@ def posts(request):
 def editprofile(request):
 
     if request.method == 'POST':
-        ppic = request.POST.get('profilephoto')
+        ppic = request.FILES['profilephoto']
         bio = request.POST.get('bio')
         userprofile = Userprofile(profilepic=ppic, about=bio)
         userprofile.save()
