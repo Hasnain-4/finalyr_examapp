@@ -45,40 +45,41 @@
 
 <div class="container  mb-5 pl-5 pr-5 pb-5">
 
-  <form action="teacher" method="post" enctype="multipart/form-data">
+  <form action="teacherquiz" method="post" enctype="multipart/form-data">
 
     {% csrf_token %}
 
     <div class="form-group">
       <label for="exampleFormControlInput1">Time Limitation</label>
-      <input type="name" name="timelimit" placeholder="Example : 2 hours / 1 hours or 50 minutes" class="form-control"
+      <input type="name" name="timelimitQz" placeholder="Example : 2 hours / 1 hours or 50 minutes" class="form-control"
         id="name">
     </div>
     <div class="form-group">
       <label for="exampleFormControlInput1">Subject Name</label>
-      <input type="name" name="sub_name" class="form-control" id="exampleFormControlInput1"
+      <input type="name" name="sub_nameQz" class="form-control" id="exampleFormControlInput1"
         placeholder="Please Enter Subject Name">
     </div>
 
     <div class="form-group">
       <label for="exampleFormControlInput1">Best Wishes</label>
-      <input type="name" name="bestwishes" class="form-control" id="exampleFormControlInput1"
+      <input type="name" name="bestwishesQz" class="form-control" id="exampleFormControlInput1"
         placeholder="Wish Your Students To Give Their Best">
     </div>
 
     <div class="form-group text-danger">
       <label for="exampleFormControlInput1">Warning Message <b>(For Emergency Purpose Only)</b></label>
-      <input type="name" name="warningmsg" class="form-control" id="exampleFormControlInput1"
+      <input type="name" name="warningmsgQz" class="form-control" id="exampleFormControlInput1"
         placeholder="Type Your Warning Here...">
     </div>
 
-    <button type="submit" name="bsubmit" class="btn btn-primary mt-2">Submit</button>
+    <button type="submit" name="bsubmitQz" class="btn btn-primary mt-2">Submit</button>
 
     <h3 class="h3 mt-4 mb-4 text-center ">Either Write Your Question or Upload From <b>' Choose File '</b> Given Below
     </h3>
+    
     <div class="form-group">
       <label for="exampleFormControlTextarea1">Please Type Your Question</label>
-      <textarea class="form-control" name="written_question" id="exampleFormControlTextarea1"
+      <textarea class="form-control" name="written_questionQz" id="exampleFormControlTextarea1"
         placeholder="Type Your Question Here..." rows="3"></textarea>
     </div>
 
@@ -87,40 +88,45 @@
 
     <!--For camera access in android phone-->
 
-    <input type="file" accept="image/*" name="imagequestion" capture="camera">
+    <input type="file" accept="image/*" name="imagequestionQz" capture="camera">
 
     <!--For image uploading-->
 
-    <!-- <input type="file" id="myFile" name="imagequestion"><br>  -->
+    <!-- <input type="file" id="myFile" name="imagequestionQz"><br>  -->
+
 
     <hr>
+
+    {% comment %} options section {% endcomment %}
+
     <h3 class="h3 text-center  mt-5 mb-4">Please Enter Options</h3>
 
     <div class="form-group">
       <label for="exampleFormControlInput1">Option 1</label>
-      <input type="name" name="op1" value="A" class="form-control" id="exampleFormControlInput1"
+      <input type="name" name="op1Qz" value="A" class="form-control" id="exampleFormControlInput1"
         placeholder="Example : A or can be some text">
     </div>
 
     <div class="form-group">
       <label for="exampleFormControlInput1">Option 2</label>
-      <input type="name" name="op2" value="B" class="form-control" id="exampleFormControlInput1"
+      <input type="name" name="op2Qz" value="B" class="form-control" id="exampleFormControlInput1"
         placeholder="Example : B or can be some text">
     </div>
 
     <div class="form-group">
       <label for="exampleFormControlInput1">Option 3</label>
-      <input type="name" name="op3" value="C" class="form-control" id="exampleFormControlInput1"
+      <input type="name" name="op3Qz" value="C" class="form-control" id="exampleFormControlInput1"
         placeholder="Example : C or can be some text">
     </div>
 
     <div class="form-group">
       <label for="exampleFormControlInput1">Option 4</label>
-      <input type="name" name="op4" value="D" class="form-control" id="exampleFormControlInput1"
+      <input type="name" name="op4Qz" value="D" class="form-control" id="exampleFormControlInput1"
         placeholder="Example : D or can be some text">
     </div>
+    
+    <button type="submit" name="qsubmitQz" class="btn btn-primary mt-2">Upload</button>
 
-    <button type="submit" name="qsubmit" class="btn btn-primary mt-2">Submit</button>
   </form>
 
 </div>

@@ -4,34 +4,34 @@
 {% if user.is_authenticated %}
 <!--Message section-->
 
-<div class = "container-fluid pb-0 pt-5 mt-3 ">
+<div class="container-fluid pb-0 pt-5 mt-3 ">
 
-{% if messages %}
-{% for message in messages %}
+  {% if messages %}
+  {% for message in messages %}
 
 
-<div class="alert alert-{{ message.tags }} alert-dismissible fade show " role="alert">
+  <div class="alert alert-{{ message.tags }} alert-dismissible fade show " role="alert">
     <strong>{{ message }}</strong>
-  <button type="button" class="close " data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
+    <button type="button" class="close " data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
 
-{% endfor %}
+  {% endfor %}
 
-{% endif %}
+  {% endif %}
 
 </div>
 <!--Message section End-->
 
 <div class="container-fluid m-0 p-0">
 
-    <div class="jumbotron jumbotron-fluid pt-4 pb-4 bg-dark">
+  <div class="jumbotron jumbotron-fluid pt-4 pb-4 bg-dark">
     <div class="container">
-        <h1 class="display-4 text-white">Hey, {{user.username}}</h1>
-        <p class="lead text-info">Hope You Will Give Your Best In This Exam :)</p>
+      <h1 class="display-4 text-white">Hey, {{user.username}}</h1>
+      <p class="lead text-info">Hope You Will Give Your Best In This Exam :)</p>
     </div>
-    </div>
+  </div>
 </div>
 
 
@@ -41,38 +41,44 @@
 
 <!--Timeslot given by teacher-->
 
-<h3 class = "h2 text-center">
-<small class="text-muted">You Have</small>
-         {{teach.timeslot}}
+<h3 class="h2 text-center">
+  <small class="text-muted">You Have</small>
+  {{teach.timeslot}}
   <small class="text-muted">Only</small>
 </h3>
+<div class="col-sm-3">
+      <input type="name" style = "background-color:#214161" name = "stdntname" readonly value = "{{user.username}}" class="form-control text-white text-center" id="name">
+    </div>
+</div>
 
-<hr class= "mt-4">
 
-<h5 class = " p-3">
-<small>Subject : </small>
-         {{teach.subject}}
+<hr class="mt-4">
+
+<h5 class=" p-3">
+  <small>Subject : </small>
+  {{teach.subject}}
 </h5>
 
-<h5 class = " pl-3">
-<small>Date & Time : </small>
-         {{teach.date}}
+<h5 class=" pl-3">
+  <small>Date & Time : </small>
+  {{teach.date}}
 </h5>
-<hr class= "mt-4">
+
+<hr class="mt-4">
 
 {% if teach.bestwish %}
 <h1 class="text-center">{{teach.bestwish}}</h1>
 {% else %}
-<h4 class = "text-center"> All The Very Best Student!!</h4>
+<h4 class="text-center"> All The Very Best Student!!</h4>
 {% endif %}
-<hr class= "mt-4">
+<hr class="mt-4">
 
 {% comment %} <div class="container m-0 p-3">
 
   <input type="radio" id="age1" name="age" name="age1" value="30">
   <label for="age1">0 - 30</label><br>
   <input type="radio" id="age2" name="age" name="age2" value="60">
-  <label for="age2">31 - 60</label><br>  
+  <label for="age2">31 - 60</label><br>
   <input type="radio" id="age3" name="age" name="age3" value="100">
   <label for="age3">61 - 100</label><br>
   <input type="radio" id="age4" name="age" name="age4" value="130">
@@ -83,82 +89,83 @@
 <!--Question starts from here .. for loop must be start from here-->
 
 
- {% for techr in teachQ %}
+{% for techr in teachQ %}
 
- {% if techr.writtenquestion %}
-    <div class="jumbotron jumbotron-fluid pt-3 pb-3">
-    <div class="container">
+{% if techr.writtenquestion %}
+<div class="jumbotron jumbotron-fluid pt-3 pb-3">
+  <div class="container">
     <b>Q. {{forloop.counter}}</b> {{techr.writtenquestion}}
     {% comment %} <p class="lead"> </p> {% endcomment %}
-    </div>
-    </div>
-{% elif techr.imagequestion %}    
-  <b>Q. {{forloop.counter}}</b> 
-  <a  href ={{techr.imagequestion.url}}>
-<img src="{{techr.imagequestion.url}}" class="img-fluid p-3" style="width:933px; height: auto;" alt="{{techr.imagequestion.url}}">
+  </div>
+</div>
+{% elif techr.imagequestion %}
+<b>Q. {{forloop.counter}}</b>
+<a href={{techr.imagequestion.url}}>
+  <img src="{{techr.imagequestion.url}}" class="img-fluid p-3" style="width:933px; height: auto;"
+    alt="{{techr.imagequestion.url}}">
 </a>
 {% endif %}
 
-         
+
 <div class="container">
-<div class="row">
-  <div class="col-7">
-<!--Options will be here .. for loop must be start from here-->
-  <h5 class = "h5 ml-4">
-    <small>a) </small>
-         {{techr.option1}}
-  </h5>
+  <div class="row">
+    <div class="col-7">
+      <!--Options will be here .. for loop must be start from here-->
+      <h5 class="h5 ml-4">
+        <small>a) </small>
+        {{techr.option1}}
+      </h5>
 
-  <h5 class = "h5 ml-4">
-    <small>b) </small>
-         {{techr.option2}}
-  </h5>
+      <h5 class="h5 ml-4">
+        <small>b) </small>
+        {{techr.option2}}
+      </h5>
 
-  <h5 class = "h5 ml-4">
-    <small>c) </small>
-         {{techr.option3}}
-  </h5>
+      <h5 class="h5 ml-4">
+        <small>c) </small>
+        {{techr.option3}}
+      </h5>
 
-  <h5 class = "h5 ml-4">
-    <small>d) </small>
-         {{techr.option4}}
-  </h5>
+      <h5 class="h5 ml-4">
+        <small>d) </small>
+        {{techr.option4}}
+      </h5>
 
-</div>
-<!--delete question by id-->
-{% if user.is_staff %}
+    </div>
+    <!--delete question by id-->
+    {% if user.is_staff %}
 
-  <div class="col">
-          <a href="{% url 'delete_question' techr.id %}">
-            <p class = "text-right ">Delete Question?</p>
-          </a>
+    <div class="col">
+      <a href="{% url 'delete_question' techr.id %}">
+        <p class="text-right ">Delete Question?</p>
+      </a>
+    </div>
+
+    {% endif %}
+
+    <!--delete question by id-->
+
   </div>
-
-  {% endif %}
-  
-  <!--delete question by id-->
-
-</div>
 </div>
 
 <hr>
 
-<div class = "container pl-5 pr-5">
+<div class="container pl-5 pr-5">
 
-<form action= "student" method= "post" >
+  <form action="student" method="post">
 
     {% csrf_token %}
 
 
-{% comment %}   <input type="hidden" value='{{ article_id }}' id='article_id' name='article_id'/>
- {% endcomment %}  
-  
-  <div class="form-group row">
-    <label class="col-sm-1 col-form-label"><b>Ans -</b></label>
-    <div class="col-sm-6">
-    <input type="name" name= "examsubmit" placeholder="Write Your Answer Here..." class="form-control" id="name" >
+    {% comment %} <input type="hidden" value='{{ article_id }}' id='article_id' name='article_id' />
+    {% endcomment %}
+
+    <div class="form-group row">
+      <label class="col-sm-1 col-form-label"><b>Ans -</b></label>
+      <div class="col-sm-6">
+        <input type="name" name="examsubmit" placeholder="Write Your Answer Here..." class="form-control" id="name">
+      </div>
     </div>
-  </div>
 
 </div>
 
@@ -171,12 +178,13 @@
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary ml-5 mb-5 mt-3" data-toggle="modal" data-target="#exampleModal">
 
-Submit Answer
+  Submit Answer
 
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -186,7 +194,8 @@ Submit Answer
         </button>
       </div>
       <div class="modal-body">
-        If you click on Save & Submit then your response will be submitted, and you will be redirect to home page automatically!!
+        If you click on Save & Submit then your response will be submitted, and you will be redirect to home page
+        automatically!!
         & if you want to change your answers, just close this.
       </div>
       <div class="modal-footer">
@@ -206,12 +215,13 @@ Submit Answer
 
 <div class="container-fluid mt-5 pt-5">
 
-    <div class="jumbotron jumbotron-fluid bg-dark pt-4 pb-4">
+  <div class="jumbotron jumbotron-fluid bg-dark pt-4 pb-4">
     <div class="container">
-        <h1 class="display-4 text-white">Hey, Wait!</h1>
-        <p class="lead text-danger"><b>You Are Not Authorized To Access This Page! Please Login to Access Exam Section</b></p>
+      <h1 class="display-4 text-white">Hey, Wait!</h1>
+      <p class="lead text-danger"><b>You Are Not Authorized To Access This Page! Please Login to Access Exam Section</b>
+      </p>
     </div>
-    </div>
+  </div>
 </div>
 
 {% endif %}
