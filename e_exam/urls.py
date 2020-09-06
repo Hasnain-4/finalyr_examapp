@@ -31,6 +31,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('exam1.urls')),
     path('', include('exam_news.urls')),
+    path('', include('quiz.urls')),
 
 #for reset password...................
     path('password_reset/',

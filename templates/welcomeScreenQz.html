@@ -1,0 +1,63 @@
+{% block content %}
+
+     <!-- CSS only -->
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+ <style>
+       
+
+</style>
+
+<div class="jumbotron jumbotron-fluid" style="background-color:Black;">
+  <div class="container">
+    <h1 class="text-danger">Please Read The Instructions Carefully</h1>
+        <ul class="mt-4 text-white">
+            <li>If you want to explore your knowledge then you must have to attend this test.</li>
+            <li>Once you have selected any option, you must have to click on submit answer button.</li>
+            <li>After clicking on Submit Answer Button, you must have to click on next question button to see your next question.</li>
+            <li>Click on Start Quiz button given below to start your test.</li>
+        </ul>
+  </div>
+</div>
+       
+       <center>
+        <!-- Button trigger modal -->
+<button type="button" id="cntr" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+Start Quiz
+</button>
+    {% comment %} <center><h1 data-toggle="modal" data-target="#staticBackdrop"><a href="/quiz/" target="_blank">Start Quiz</a></h1></center> {% endcomment %}
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-danger" id="staticBackdropLabel">Instructions</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Please remember one thing, After selecting any option, <b> you must have to hit Submit Answer</b> otherwise your response will be discarded.
+            Click On I Agree button to start your test.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <a href="/quiz/" target="_blank" class="btn btn-success">I Agree</a>
+      </div>
+    </div>
+  </div>
+</div>
+       </center>
+
+    {% comment %} <center><h1><a href="/quiz/" target="_blank">Start Quiz</a></h1></center> {% endcomment %}
+
+
+<!-- JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script> 
+
+{% endblock %}

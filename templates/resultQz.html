@@ -1,0 +1,30 @@
+{% block content %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+<style>
+
+    #thanks{
+        width: 35%;
+        height: 5%;
+        position: absolute;
+        top:3rem;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+    
+</style>
+
+<div class="jumbotron jumbotron-fluid" style="Background-color:black">
+  <div class="container">
+    <h1 class="text-center text-white">Thanks alot For Your Valuable Time</h1>
+        <center><a href="{% url 'home' %} "  style="color:red;">click here for home page</a></center> 
+  </div>
+</div>
+        <div id="thanks">
+            <center><h1>Your Score : {{score}}</h1></a></center>
+        </div>
+
+
+{% endblock %}

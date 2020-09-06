@@ -1,239 +1,58 @@
-{% extends 'base.html' %}
 
 {% block content %}
-{% if user.is_authenticated %}
-<!--Message section-->
 
-<div class="container-fluid pb-0 pt-5 mt-3 ">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-    {% if messages %}
-    {% for message in messages %}
+{% load static %}
+
+<script src="{% static 'Js/script.js' %}"></script>
 
 
-    <div class="alert alert-{{ message.tags }} alert-dismissible fade show " role="alert">
-        <strong>{{ message }}</strong>
-        <button type="button" class="close " data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
+<div class="jumbotron jumbotron-fluid p-3" style="Background-color:black">
+  <div class="container">
+    <h3 class="text-center text-white">Question {{ questions.end_index }} of  {{count}}</h3>
+  </div>
+</div>
 
+<div class="col-lg-8 border border-success p-4 m-4 mx-auto">
+    {% for i in questions %}
+    <h2>{{i.writtenquestion}}</h2>
+    <form>
+        <div class="radio">
+        <label><input type="radio" name="name"  id="option1" value="{{i.option1}}"> {{i.option1}} </label> 
+        </div>
+        <div class="radio">
+        <label > <input type="radio" name="name"  id="option2" value="{{i.option2}}"> {{i.option2}}</label>
+        </div>
+        <div class="radio">
+        <label ><input type="radio" name="name" id="option3" value="{{i.option3}}"> {{i.option3}}</label>
+        </div>
+        <div class="radio">
+        <label ><input type="radio" name="name"  id="option4" value="{{i.option4}}"> {{i.option4}} </label>
+        </div>
+    </form>
     {% endfor %}
 
-    {% endif %}
+    <div class="form-group">
+        <button class="btn  btn-success" id="save_ans">Submit Answer</button>
+    </div>
 
-</div>
-<!--Message section End-->
-
-<div class="container-fluid m-0 p-0">
-
-    <div class="jumbotron jumbotron-fluid pt-4 pb-4 bg-dark">
-        <div class="container">
-            <h1 class="display-4 text-white">Hey, {{user.username}}</h1>
-            <p class="lead text-info">Hope You Will Give Your Best In This Exam :)</p>
+    <div class="paginetor">
+        <div class="form-group">
+        {% if questions.has_next %}
+        <a href="?page={{ questions.next_page_number }}"><button class="btn form-control btn-primary" id="submitAnswer">Next</button></a>
+        {% else %}
+        <a href="/result/"><button class="btn form-control btn-success" id="submitAnswer">Submit Quiz</button></a>  
+        {% endif %} 
         </div>
     </div>
-</div>
-
-
-<!--Warning message-->
-
-<h1 class="text-center text-danger">{{teach.warningmessage}}</h1>
-
-<!--Timeslot given by teacher-->
-
-<h3 class="h2 text-center">
-    <small class="text-muted">You Have</small>
-    {{teach.timeslot}}
-    <small class="text-muted">Only</small>
-</h3>
-
-<hr class="mt-4">
-
-<h5 class=" p-3">
-    <small>Subject : </small>
-    {{teach.subject}}
-</h5>
-
-<h5 class=" pl-3">
-    <small>Date & Time : </small>
-    {{teach.date}}
-</h5>
-<hr class="mt-4">
-
-{% if teach.bestwish %}
-<h1 class="text-center">{{teach.bestwish}}</h1>
-{% else %}
-<h4 class="text-center"> All The Very Best Student!!</h4>
-{% endif %}
-<hr class="mt-4">
-
-{% comment %} <div class="container m-0 p-3">
-
-    <input type="radio" id="age1" name="age" name="age1" value="30">
-    <label for="age1">0 - 30</label><br>
-    <input type="radio" id="age2" name="age" name="age2" value="60">
-    <label for="age2">31 - 60</label><br>
-    <input type="radio" id="age3" name="age" name="age3" value="100">
-    <label for="age3">61 - 100</label><br>
-    <input type="radio" id="age4" name="age" name="age4" value="130">
-    <label for="age4">111 - 130</label><br>
-
-</div> {% endcomment %}
-
-<!--Question starts from here .. for loop must be start from here-->
-
-
-{% for techr in teachQ %}
-
-{% if techr.writtenquestion %}
-<div class="jumbotron jumbotron-fluid pt-3 pb-3">
-    <div class="container">
-        <b>Q. {{forloop.counter}}</b> {{techr.writtenquestion}}
-        {% comment %} <p class="lead"> </p> {% endcomment %}
-    </div>
-</div>
-{% elif techr.imagequestion %}
-<b>Q. {{forloop.counter}}</b>
-<a href={{techr.imagequestion.url}}>
-    <img src="{{techr.imagequestion.url}}" class="img-fluid p-3" style="width:933px; height: auto;"
-        alt="{{techr.imagequestion.url}}">
-</a>
-{% endif %}
-
-
-<div class="container">
-    <div class="row">
-        <div class="col-7">
-            <!--Options will be here .. for loop must be start from here-->
-
-<form action="studentqz" method="post">
-
-        {% csrf_token %}
         
-
-        <div class="form-check">
-        <input class="form-check-input" type="radio" name="exampleRadios{{forloop.counter}} " id="exampleRadios1">
-        <label class="form-check-label" for="exampleRadios1">
-            {{techr.option1}}
-        </label>
-        </div>
-        <div class="form-check">
-        <input class="form-check-input" type="radio" name="exampleRadios{{forloop.counter}} " id="exampleRadios1">
-        <label class="form-check-label" for="exampleRadios1">
-            {{techr.option2}}
-        </label>
-        </div>
-
-        <div class="form-check">
-        <input class="form-check-input" type="radio" name="exampleRadios{{forloop.counter}} " id="exampleRadios1">
-        <label class="form-check-label" for="exampleRadios1">
-            {{techr.option3}}
-        </label>
-        </div>
-
-        <div class="form-check">
-        <input class="form-check-input" type="radio" name="exampleRadios{{forloop.counter}} " id="exampleRadios1">
-        <label class="form-check-label" for="exampleRadios1">
-            {{techr.option4}}
-        </label>
-        </div>
-  
-        
-            {% comment %} <h5 class="h5 ml-4">
-                <small>a) </small>
-                {{techr.option1}}
-            </h5>
-
-            <h5 class="h5 ml-4">
-                <small>b) </small>
-                {{techr.option2}}
-            </h5>
-
-            <h5 class="h5 ml-4">
-                <small>c) </small>
-                {{techr.option3}}
-            </h5>
-
-            <h5 class="h5 ml-4">
-                <small>d) </small>
-                {{techr.option4}}
-            </h5> {% endcomment %}
-
-        </div>
-        <!--delete question by id-->
-        {% if user.is_staff %}
-
-        <div class="col">
-            <a href="{% url 'delete_question_quiz' techr.id %}">
-                <p class="text-right ">Delete Question?</p>
-            </a>
-        </div>
-
-        {% endif %}
-
-        <!--delete question by id-->
-
-    </div>
 </div>
 
-<hr>
+<!-- JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script> 
 
-
-{% endfor %}
-
-<!--for loop must be end here-->
-
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary ml-5 mb-5 mt-3" data-toggle="modal" data-target="#exampleModal">
-
-    Submit Answer
-
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title text-info" id="exampleModalLabel">Please Be Careful {{user.username}}</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                If you click on Save & Submit then your response will be submitted, and you will be redirect to home
-                page
-                automatically!!
-                & if you want to change your answers, just close this.
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-info">Save & Submit</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-{% comment %} <button type="submit" class="btn-lg btn-primary ml-5 mb-3">Submit</button> {% endcomment %}
-
-</form>
-
-{% else %}
-
-<div class="container-fluid mt-5 pt-5">
-
-    <div class="jumbotron jumbotron-fluid bg-dark pt-4 pb-4">
-        <div class="container">
-            <h1 class="display-4 text-white">Hey, Wait!</h1>
-            <p class="lead text-danger"><b>You Are Not Authorized To Access This Page! Please Login to Access Exam
-                    Section</b>
-            </p>
-        </div>
-    </div>
-</div>
-
-{% endif %}
 
 {% endblock %}
