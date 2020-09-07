@@ -25,3 +25,6 @@ class Teacher_Quiz_Questions(models.Model):
     option3 = models.CharField(default='C',max_length= 150)
     option4 = models.CharField(default='D',max_length= 150)
     answer = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.writtenquestion
