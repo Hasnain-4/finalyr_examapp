@@ -1,7 +1,37 @@
 {% extends 'base.html' %}
 
-
 {% block content %}
+
+<style>
+ @media screen and (max-width: 411px) {
+   #head1,#head2,#head3,#head4{
+      display:flex;
+      flex-wrap:wrap;
+      font-size:1.5rem;
+      
+    }
+    
+    #para1,#para2,#para3,#para4{
+      font-size:0.7rem;
+      padding-top:1rem;
+     
+    }
+    #mainhead{
+      font-size:2rem;
+    }
+    #mainhead1{
+      font-size:1.4rem;
+    }
+    #parahead{
+      font-size:1.3rem;
+    }
+    #paramain1{
+      font-size:0.7rem;
+    }
+    
+}
+
+</style>
 
 <div class="container-fluid pl-0 pr-0 mt-5">
   {% comment %} <img src="https://source.unsplash.com/1600x700/?nature,water" class="img-fluid" alt="image">
@@ -18,8 +48,8 @@
   </div>
 
   <div class="container-fluid pl-0 pr-0 mt-5">
-    <h1 class="display-4 text-center">Welcome to the new world </h1>
-    <p class="h2 text-center">Let's explore this website</p>
+    <h1 id="mainhead" class="display-4 text-center">Welcome to the new world </h1>
+    <p id="parahead" class="h2 text-center">Let's explore this website</p>
 
   </div>
 
@@ -42,8 +72,8 @@
 
   <div class="jumbotron">
     <div class="container">
-      <h1 class="display-4 text-center">Things to explore in this website</h1><br>
-      <p class="lead text-justify">Here you are going to enjoy the posts that will be shared by other users and also you
+      <h1 id="mainhead1" class="display-4 text-center">Things to explore in this website</h1><br>
+      <p id="paramain1" class="lead text-justify">Here you are going to enjoy the posts that will be shared by other users and also you
         will be able to comment on that
         and you can also share your thoughts in the form of text as well as in image and there is a news section where
         you can read the top current news. Hope you will enjoy the tour on exploring this website.</p>
@@ -55,14 +85,14 @@
       <div class="col-7">
 
         <p class="mt-5">
-        <h2>Online Examination For Anyone</h2>
+        <h2 id="head1">Online Examination For Anyone</h2>
         </p>
-        <hr>
-        <p class="mt-1 text-justify">{% lorem 3 b random %}</p>
+        <hr id="hr1">
+        <p id="para1" class="mt-1 text-justify">{% lorem 3 b random %}</p>
       </div>
 
-      <div class="col mt-5 pt-5">
-        <img src="static/images/online_exam.jpg" class="img-fluid mt-5" style="width: 460px; height: 310px;" alt="...">
+      <div  class="col mt-5 pt-5">
+        <img id="img1" src="static/images/online_exam.jpg" class="img-fluid mt-5" style="width: 460px; height: 310px;" alt="...">
       </div>
 
     </div>
@@ -77,10 +107,10 @@
       <div class="col-7">
 
         <p class="mt-5">
-        <h2>Images & Videos With Caption</h2>
+        <h2 id="head2">Images & Videos With Caption</h2>
         </p>
-        <hr>
-        <p class="mt-1 text-justify">{% lorem 3 b random %}</p>
+        <hr id="hr2">
+        <p id="para2" class="mt-1 text-justify">{% lorem 3 b random %}</p>
       </div>
     </div>
   </div>
@@ -90,10 +120,10 @@
       <div class="col-7">
 
         <p class="mt-5">
-        <h2>Latest News</h2>
+        <h2 id="head3">Latest News</h2>
         </p>
-        <hr>
-        <p class="mt-1 text-justify">{% lorem 3 b random %}</p>
+        <hr id="hr3">
+        <p id="para3" class="mt-1 text-justify">{% lorem 3 b random %}</p>
       </div>
 
       <div class="col mt-5 pt-5">
@@ -107,10 +137,10 @@
   {% comment %} ========= {% endcomment %}
   <div class="container-fluid mt-4 ">
     <p class="mt-5">
-    <h2>Want Improvement??Please Comment via contact section</h2>
+    <h2 id="head4">Want Improvement??Please Comment via contact section</h2>
     </p>
-    <hr>
-    <p class="mt-1  mb-4 text-justify">{% lorem 3 b random %}</p>
+    <hr id="hr4">
+    <p id="para4" class="mt-1  mb-4 text-justify">{% lorem 3 b random %}</p>
   </div>
 
   {% endblock  %}
