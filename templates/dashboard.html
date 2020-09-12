@@ -1,11 +1,15 @@
 {% extends 'base.html' %}
 
-{% block content %}
 {% block title %}
 | dashboard
 {% endblock title %}
+{% block content %}
 <style>
-  
+   @media screen and (max-width: 411px) {
+     .profilecard{
+       margin-left:1rem;
+     }
+    }
 </style>
 
 {% if user.is_authenticated %}
@@ -38,7 +42,7 @@
 <!--Profile Section Starts-->
   <div class="col-sm-5 mb-4">
   
-  <div class="card text-center" style="width: 14rem;box-shadow:0 0 5px;">
+  <div class="card text-center profilecard" style="width: 14rem;box-shadow:0 0 5px;">
   
   {% if fetchuser.profilepic == None %}
 

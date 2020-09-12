@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 
-{% block content %}
 {% block title %}
 | quiz
 {% endblock title %}
+{% block content %}
 <!--Message section-->
 {% if user.is_staff %}
 
@@ -30,7 +30,7 @@
 
 <div class="container-fluid m-0 p-0">
 
-  <div class="jumbotron jumbotron-fluid pt-4 pb-4 bg-dark">
+  <div class="jumbotron jumbotron-fluid pt-4 pb-4" style="background-color:black;">
     <div class="container">
       <h1 class="display-4 text-white">Hey, {{user.username}} sir</h1>
       <p class="lead text-info">Please upload the questions and their options in the required fields given below!</p>

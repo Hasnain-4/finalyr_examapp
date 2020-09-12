@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 
-{% block content %}
 {% block title %}
 | top news
 {% endblock title %}
+{% block content %}
 <div class="container-fluid  pt-5 pl-0 pr-0 text-center">
 
     <div class="jumbotron jumbotron-fluid pt-5 pb-4" style="background-color:black;">
@@ -55,7 +55,7 @@
     </div>
   </li> {% endcomment %}
 
-<div class="card-group mt-3 mb-3">
+<div class="card-group mt-3 mb-3" style="box-shadow:1px 1px 5px black;">
   <div class="card">
     <img src="{{nimage}}" class="card-img-top" alt="news_image">
     <div class="card-body">
@@ -91,7 +91,7 @@
   </li>
   <hr class="hr mt-4"> {% endcomment %}
 
-<div class="card-group mt-3 mb-3">
+<div class="card-group mt-3 mb-3" style="box-shadow:1px 1px 5px black;">
   <div class="card">
     <img src="{{nimage}}" class="card-img-top" alt="news_image">
     <div class="card-body">
@@ -113,7 +113,7 @@
     
 {% for nhead,nbody,nimage,ndate,url in mylist2 %}
     
-<div class="card-group mt-3 mb-3">
+<div class="card-group mt-3 mb-3" style="box-shadow:1px 1px 5px black;">
   <div class="card">
     <img src="{{nimage}}" class="card-img-top" alt="news_image">
     <div class="card-body">
@@ -134,7 +134,7 @@
     
   {% for nhead,nbody,nimage,ndate,url in mylist3 %}
     
-<div class="card-group mt-3 mb-3">
+<div class="card-group mt-3 mb-3" style="box-shadow:1px 1px 5px black;">
   <div class="card">
     <img src="{{nimage}}" class="card-img-top" alt="news_image">
     <div class="card-body">
