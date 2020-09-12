@@ -16,12 +16,14 @@ class Teacher(models.Model):
         return self.subject + ' ' + 'Question'
 
 class Stud(models.Model):
-    id = models.AutoField(primary_key=True)
-    user = models.OneToOneField(User,on_delete=models.CASCADE,null=False, blank=True)
+    # id = models.AutoField(primary_key=True)
+    # user = models.OneToOneField(User,on_delete=models.CASCADE,null=True, blank=True)
+    student_name = models.CharField(max_length=50)
     answer = models.TextField()
     #user = models.OneToOneField(User, on_delete=models.CASCADE, null=False, blank=True)
+    
     def __str__(self): 
-        return self.user.username
+        return self.student_name + "'s Answer"
 
 
 class TecherData(models.Model):

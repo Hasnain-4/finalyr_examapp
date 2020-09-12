@@ -24,7 +24,7 @@ class Imagepost(models.Model):
 
     def __str__(self):
         
-        return self.imagename + ' ' + 'added image'
+        return self.imagename + ' ' + 'Posted'
 
 class Videopost(models.Model):
 
@@ -40,8 +40,9 @@ class Videopost(models.Model):
 #In image field .. upload_to section is must
 class Userprofile(models.Model):
     profilepic = models.ImageField(upload_to="pics",default = 'static/images/john.jpg')
-    about = models.TextField()
+    user = models.OneToOneField(User,on_delete=models.CASCADE,null=False, blank=True)
+    about = models.TextField(null=True,blank=True)
 
-    # def __str__(self):
+    def __str__(self):
         
-    #     return self.username + 'updated profile'
+        return self.user.username + ' ' + 'updated profile'

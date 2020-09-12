@@ -158,19 +158,19 @@ def teacher(request):
 
             writnquestn = request.POST.get('written_question')
             imgqstn = request.FILES.get('imagequestion', False) # To prevent submitting image if there is no image choosen
-            optn1 = request.POST.get('op1')
-            optn2 = request.POST.get('op2')
-            optn3 = request.POST.get('op3')
-            optn4 = request.POST.get('op4')
+            # optn1 = request.POST.get('op1')
+            # optn2 = request.POST.get('op2')
+            # optn3 = request.POST.get('op3')
+            # optn4 = request.POST.get('op4')
 
-            if optn1 and optn2 and optn3 and optn4:
+            if writnquestn or imgqstn:
                  #To store into database if every conditions are satisfy     
-                teacher_data1 = TecherData(writtenquestion=writnquestn,imagequestion=imgqstn,option1=optn1,option2=optn2,option3=optn3,option4=optn4)
+                teacher_data1 = TecherData(writtenquestion=writnquestn,imagequestion=imgqstn)
                 teacher_data1.save()
-                messages.success(request, 'Successfully Submitted!')
+                messages.success(request, 'Question Submitted Successfully!')
                 return redirect("teacher")
             else:
-                messages.warning(request, 'All The Options are Required!')
+                messages.warning(request, 'Please, Question is Required!')
                 return redirect("teacher")
                 
     return render(request, 'teacher.html')
@@ -178,11 +178,12 @@ def teacher(request):
 
 def student(request,post_id=None):
 
-    stname = request.GET.get('stdntname')
     if request.method == 'POST':
 
         st=request.POST.getlist('examsubmit')  # returns a list of values after getting from input with same name... 
-        result = Stud(answer=st)
+        stname = request.POST.get('stdntname')
+
+        result = Stud(student_name=stname,answer=st)
         result.save()
         messages.success(request, 'Thank You! Your Response Have Been Recorded.')
         return redirect("dashboard")

@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<style>
+  .nameh{
+    display:none;
+  }
+</style>
 {% if user.is_authenticated %}
 <!--Message section-->
 
@@ -26,7 +31,7 @@
 
 <div class="container-fluid m-0 p-0">
 
-  <div class="jumbotron jumbotron-fluid pt-4 pb-4 bg-dark">
+  <div class="jumbotron jumbotron-fluid pt-4 pb-4 "style="background-color:black">
     <div class="container">
       <h1 class="display-4 text-white">Hey, {{user.username}}</h1>
       <p class="lead text-info">Hope You Will Give Your Best In This Exam :)</p>
@@ -46,10 +51,6 @@
   {{teach.timeslot}}
   <small class="text-muted">Only</small>
 </h3>
-<div class="col-sm-3">
-      <input type="name" style = "background-color:#214161" name = "stdntname" readonly value = "{{user.username}}" class="form-control text-white text-center" id="name">
-    </div>
-</div>
 
 
 <hr class="mt-4">
@@ -71,7 +72,7 @@
 {% else %}
 <h4 class="text-center"> All The Very Best Student!!</h4>
 {% endif %}
-<hr class="mt-4">
+<hr style="height:2px;border-width:0;color:gray;background-color:gray" class="hr mt-4 mb-3">
 
 {% comment %} <div class="container m-0 p-3">
 
@@ -106,7 +107,7 @@
 </a>
 {% endif %}
 
-
+{% comment %} 
 <div class="container">
   <div class="row">
     <div class="col-7">
@@ -131,7 +132,7 @@
         {{techr.option4}}
       </h5>
 
-    </div>
+    </div> {% endcomment %}
     <!--delete question by id-->
     {% if user.is_staff %}
 
@@ -144,9 +145,9 @@
     {% endif %}
 
     <!--delete question by id-->
-
+{% comment %} 
   </div>
-</div>
+</div> {% endcomment %}
 
 <hr>
 
@@ -160,16 +161,19 @@
     {% comment %} <input type="hidden" value='{{ article_id }}' id='article_id' name='article_id' />
     {% endcomment %}
 
+<div class="col-sm-3 nameh">
+      <input type="name" style = "background-color:#214161" name = "stdntname" readonly value = "{{user.username}}" class="form-control text-white text-center" id="name">
+</div>
     <div class="form-group row">
       <label class="col-sm-1 col-form-label"><b>Ans -</b></label>
       <div class="col-sm-6">
-        <input type="name" name="examsubmit" placeholder="Write Your Answer Here..." class="form-control" id="name">
+        <textarea type="name" name="examsubmit" placeholder="Write Your Answer Here..." class="form-control" id="name"></textarea>
       </div>
     </div>
 
 </div>
 
-<hr>
+<hr style="height:2px;border-width:0;color:gray;background-color:gray" class="hr mt-3 mb-3">
 
 {% endfor %}
 

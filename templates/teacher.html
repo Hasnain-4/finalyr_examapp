@@ -28,7 +28,7 @@
 
 <div class="container-fluid m-0 p-0">
 
-  <div class="jumbotron jumbotron-fluid pt-4 pb-4 bg-dark">
+  <div class="jumbotron jumbotron-fluid pt-4 pb-4"style="background-color:black">
     <div class="container">
       <h1 class="display-4 text-white">Hey, {{user.username}} sir</h1>
       <p class="lead text-info">Please upload the questions and their options in the required fields given below!</p>
@@ -94,7 +94,7 @@
     <!-- <input type="file" id="myFile" name="imagequestion"><br>  -->
 
     <hr>
-    <h3 class="h3 text-center  mt-5 mb-4">Please Enter Options</h3>
+    {% comment %} <h3 class="h3 text-center  mt-5 mb-4">Please Enter Options</h3>
 
     <div class="form-group">
       <label for="exampleFormControlInput1">Option 1</label>
@@ -118,7 +118,7 @@
       <label for="exampleFormControlInput1">Option 4</label>
       <input type="name" name="op4" value="D" class="form-control" id="exampleFormControlInput1"
         placeholder="Example : D or can be some text">
-    </div>
+    </div> {% endcomment %}
 
     <button type="submit" name="qsubmit" class="btn btn-primary mt-2">Submit</button>
   </form>
