@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+{% block title %}
+| contact
+{% endblock title %}
 {% if user.is_authenticated %}
 
 <div class="jumbotron jumbotron-fluid mt-5 bg-dark">

@@ -108,7 +108,9 @@ def news(request):
 
     return render(request, 'news.html', context={"mylist":mylist,"mylist1":mylist1,"mylist2":mylist2,"mylist3":mylist3})
 
-
+def search(request):
+    query = request.GET['query']
+    return render(request, 'search.html',{'query':query})
 
 # def bbc(request):
 #     newsapi = NewsApiClient(api_key="YOUR API KEY")
