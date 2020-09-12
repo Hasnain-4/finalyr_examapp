@@ -6,28 +6,8 @@
 {% endblock title %}
 {% if user.is_authenticated %}
 
-
-<div class = "container pt-5 mt-3 ">
-
-{% if messages %}
-{% for message in messages %}
-
-
-<div class="alert alert-{{ message.tags }} alert-dismissible fade show " role="alert">
-    <strong>{{ message }}</strong>
-  <button type="button" class="close " data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
-
-{% endfor %}
-
-{% endif %}
-
-</div>
-
-<div class="container-fluid text-white pb-1 text-center"style="background-color:black">
-<h1 class="display-4">Image Section</h1>
+<div class="container-fluid text-white pb-1 pt-3 text-center"style="background-color:black">
+<h1 class="display-4 mt-4">Image Section</h1>
 </div>
 <h5 class = "h5 text-center mt-2">Post Your Image With Caption</h5>
 <hr>
@@ -57,7 +37,7 @@
     </div>
   </div>
 
-<button type="submit" name = 'postimage' class="btn btn-primary">Post</button>
+<button type="submit" name = 'postimage' class="btn btn-primary mt-2" style="padding:5px 20px">Post</button>
 
 </div>
 
@@ -67,7 +47,7 @@
 <h5 class = "h5 text-center mt-2">Post Your Video Link With Caption</h5>
 <hr>
 
-<div class = "container ml-5 mr-5 mb-5 pl-5 pr-5 pb-5">
+<div class = "container mb-5 pl-5 pr-5 pb-5">
 
     <form action="posts" method="post">
 
@@ -97,7 +77,7 @@
   </div>
   
 
-<button type="submit"  name = 'postvideo' class="btn btn-primary">Post</button>
+<button type="submit"  name = 'postvideo' class="btn btn-primary mt-2" style="padding:5px 20px">Post</button>
 
 </div>
 

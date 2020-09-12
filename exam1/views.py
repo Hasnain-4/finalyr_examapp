@@ -111,7 +111,7 @@ def posts(request):
         if 'postimage' in request.POST:
         
             imgname = request.POST.get('imagename')
-            photo = request.FILES['photo1']
+            photo = request.FILES.get('photo1',False)
             caption1 = request.POST.get('caption1')
             imagepostdata = Imagepost(image = photo, caption = caption1, imagename = imgname)
             imagepostdata.save()
