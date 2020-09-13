@@ -4,6 +4,14 @@
 | quiz
 {% endblock title %}
 {% block content %}
+<style>
+   @media screen and (max-width: 411px) {
+     .Qtext{
+       font-size:1.1rem;
+     }
+    }
+</style>
+
 <!--Message section-->
 {% if user.is_staff %}
 
@@ -33,7 +41,7 @@
   <div class="jumbotron jumbotron-fluid pt-4 pb-4" style="background-color:black;">
     <div class="container">
       <h1 class="display-4 text-white">Hey, {{user.username}} sir</h1>
-      <p class="lead text-info">Please upload the questions and their options in the required fields given below!</p>
+      <p class="lead text-info">Please upload the questions and their options with the answer in required fields given below!</p>
       <hr>
       <p class="text-white"><b class="text-danger">Note </b>: Please Remember, <b class="lead text-info"> The Last
           Submitted Value </b> of Time Limitation, Subject Name & Best Wishes <b class="lead text-info"> Will Be Shown
@@ -76,7 +84,7 @@
 
     <button type="submit" name="bsubmitQz" class="btn btn-primary mt-2">Submit</button>
 
-    <h3 class="h3 mt-4 mb-4 text-center ">Either Write Your Question or Upload From <b>' Choose File '</b> Given Below
+    <h3 class="h3 mt-4 mb-4 text-center Qtext">Either Write Your Question or Upload From <b>' Choose File '</b> Given Below
     </h3>
     
     <div class="form-group">

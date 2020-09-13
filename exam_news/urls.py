@@ -10,5 +10,6 @@ urlpatterns = [
     path('teacher', views.teacher , name = 'teacher'),
     path('student', views.student , name = 'student'),
     path('delete_question/<post_id>',views.deleteQuestn,name='delete_question'),
+    path('faq',views.faq,name='faq'),
 
 ]

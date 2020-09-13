@@ -201,7 +201,8 @@ def deleteQuestn(request,post_id=None):
     
     return redirect('/student')    
     
-
+def faq(request):
+    return render(request, 'faq.html')
 #Quiz question section......................
 
 

@@ -4,6 +4,13 @@
 | written exam
 {% endblock title %}
 {% block content %}
+<style>
+   @media screen and (max-width: 411px) {
+     .Qtext1{
+       font-size:1.1rem;
+     }
+    }
+</style>
 <!--Message section-->
 {% if user.is_staff %}
 
@@ -76,7 +83,7 @@
 
     <button type="submit" name="bsubmit" class="btn btn-primary mt-2">Submit</button>
 
-    <h3 class="h3 mt-4 mb-4 text-center ">Either Write Your Question or Upload From <b>' Choose File '</b> Given Below
+    <h3 class="h3 mt-4 mb-4 text-center Qtext1">Either Write Your Question or Upload From <b>' Choose File '</b> Given Below
     </h3>
     <div class="form-group">
       <label for="exampleFormControlTextarea1">Please Type Your Question</label>
